@@ -14,10 +14,10 @@
 
     <section class=" mx-[100px] mb-[200px]">
         <div class="grid grid-cols-2 gap-x-10 ">
-            <div class="">
+            <div class="" data-aos="fade-right" data-aos-duration="3000">
 
                 <div class="">
-                    <h3 class=" font-poppins font-semibold text-3xl">Hubungi Kami</h3>
+                    <h3 class=" font-poppins font-semibold text-3xl text-[#31384C]">Hubungi Kami</h3>
                     <p class=" text-base mt-4 font-poppins">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Hic, natus aspernatur magni libero expedita eveniet</p>
                 </div>
 
@@ -29,21 +29,23 @@
 
             </div>
 
-            <div class="">
-               <form class=" font-poppins">
+            <div class="" data-aos="fade-left" data-aos-duration="3000">
+               <form class=" font-poppins" method="POST">
+                    @csrf
                     <div class="px-8 pt-6 mb-4">
-                        <input class=" placeholder:text-center shadow appearance-none border border-black rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  type="text" name="nama" id="nama" placeholder="Nama">
+                        <input class=" placeholder:text-center shadow appearance-none border border-[#31384C] rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  type="text" name="nama" id="nama" placeholder="Nama">
                     </div>
                     <div class=" px-8  mb-4">
-                        <input class=" placeholder:text-center shadow appearance-none border border-black rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" name="email" id="email" placeholder="Email">
+                        <input class=" placeholder:text-center shadow appearance-none border border-[#31384C] rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" name="email" id="email" placeholder="Email">
                     </div>
-                    <div class=" px-8 mb-4">
-                        <input class=" placeholder:text-center shadow appearance-none border border-black rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  name="subjek" id="subjek" placeholder="Subjek">
-                    </div>   
                     <div class="px-8 mb-4">
-                        <input class=" size-32 placeholder:text-center shadow appearance-none border border-black rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  type="text" name="pesan" id="pesan" placeholder="Pesan">
+                        <input class=" size-32 placeholder:text-center shadow appearance-none border border-[#31384C] rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  type="text" name="pesan" id="pesan" placeholder="Pesan">
                     </div>
-                        <input class="ms-8  text-white bg-gray-900 hover:bg-gray-950 focus:ring-2 focus:outline-none  font-medium rounded-lg text-sm max-w-fit  px-8 py-2 text-center dark:bg-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800" type="submit" name="submit" id="submit" value="Kirim">
+                    <div class="px-8 mb-4">
+                         {!! NoCaptcha::renderJs() !!}
+                         {!! NoCaptcha::display() !!}
+                    </div>
+                        <input class="ms-8  text-white bg-[#31384C] hover:bg-[#31384C]/80 focus:ring-2 focus:outline-none  font-medium rounded-lg text-sm max-w-fit  px-8 py-2 text-center dark:bg-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800" type="submit" name="submit" id="submit" value="Kirim">
                 </form>
             </div>
         </div>

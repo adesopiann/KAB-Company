@@ -1,8 +1,8 @@
-<section class="mb-[20px]">
-    <div class=" mx-[100px] border-y-2 border-black mb-[15px] py-8">
+<section class="pb-[15px] text-white bg-[#31384C]">
+    <div class=" mx-[100px] border-y-2 border-gray-300/30 mb-[15px] py-8 ">
         <div class="grid grid-cols-3 gap-x-6">
             <div class="ms-6 mt-16">
-                <a href="/" class="">
+                <a href="{{ route('home') }}" class="">
                         <p class=" font-oswald text-[30px]">KARYA AMANAH</p>
                         <p class=" font-poiret text-[54px] -mt-10 -ms-4">Borneo</p>
                 </a>
@@ -12,7 +12,7 @@
 
             <div class="">
                 <div class="">
-                        <h4 class="  font-poppins font-semibold text-xl  border-b-2 border-black max-w-fit pb-1">
+                        <h4 class="  font-poppins font-semibold text-xl  border-b-2 border-gray-300/30 max-w-fit pb-1">
                             Navigasi
                         </h4>
 
@@ -24,7 +24,7 @@
                             <a href="/#product" class="  font-poppins font-thin">Produk</a>
                         </li>
                         <li>
-                            <a href="/contact" class="  font-poppins font-thin">Kontak</a>
+                            <a href="{{ route('contact') }}" class="  font-poppins font-thin">Kontak</a>
                         </li>
                     </ul>
                 </div>
@@ -50,6 +50,6 @@
     </div> 
     
     <div class="flex items-center justify-center">
-        <p class="text-center text-black text-sm  font-poppins font-semibold">&copy; {{ now()->format('Y') }} | Karya Amanah Borneo</p>
+        <p class="text-center text-gray-300 text-sm  font-poppins font-semibold">&copy; {{ now()->format('Y') }} | Karya Amanah Borneo</p>
     </div>
 </section>
