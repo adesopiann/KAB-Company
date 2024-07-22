@@ -12,13 +12,6 @@
         }
     ],
 
-    "builds": [
-    {
-      "src": "api/**/*.php",
-      "use": "@vercel/php@canary"
-    }
-  ],
-
     "env": {
         "APP_ENV": "production",
         "APP_DEBUG": "true",
