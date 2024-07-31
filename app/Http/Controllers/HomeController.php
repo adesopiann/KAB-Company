@@ -12,11 +12,6 @@ class HomeController extends Controller
          return view('index');
     }
 
-    public function contact(): View
-    {
-        return view('contact');
-    }
-
     public function product(): View
     {
         return view('product');

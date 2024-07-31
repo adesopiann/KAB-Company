@@ -30,25 +30,48 @@
             </div>
 
             <div class="" data-aos="fade-left" data-aos-duration="3000">
-               <form class=" font-poppins" method="POST">
-                    @csrf
-                    <div class="px-8 pt-6 mb-4">
-                        <input class=" placeholder:text-center shadow appearance-none border border-[#31384C] rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  type="text" name="nama" id="nama" placeholder="Nama">
+                @if(session()->has('message'))
+                    <div class="alert alert-success">
+                        {{ session()->get('message') }}
                     </div>
-                    <div class=" px-8  mb-4">
-                        <input class=" placeholder:text-center shadow appearance-none border border-[#31384C] rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" name="email" id="email" placeholder="Email">
+                @endif
+                @if ($errors->any())
+                    <div class="alert alert-danger" role="alert">
+                        <ul class="mb-0 mt-0">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
                     </div>
-                    <div class="px-8 mb-4">
-                        <input class=" size-32 placeholder:text-center shadow appearance-none border border-[#31384C] rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  type="text" name="pesan" id="pesan" placeholder="Pesan">
-                    </div>
-                    <div class="px-8 mb-4">
-                         {!! NoCaptcha::renderJs() !!}
-                         {!! NoCaptcha::display() !!}
-                    </div>
-                        <input class="ms-8  text-white bg-[#31384C] hover:bg-[#31384C]/80 focus:ring-2 focus:outline-none  font-medium rounded-lg text-sm max-w-fit  px-8 py-2 text-center dark:bg-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800" type="submit" name="submit" id="submit" value="Kirim">
+                @endif
+               <form id="contactForm" method="post" action="{{ route('contact.send') }}">
+                        @csrf
+                        <div class="mb-3">
+                            <input class="form-control placeholder:text-center shadow appearance-none border border-[#31384C] rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" type="text" name="name" placeholder="Name"/>
+                        </div>
+                        <div class="mb-3">
+                            <input class="form-control placeholder:text-center shadow appearance-none border border-[#31384C] rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" name="email"
+                                   placeholder="Email Address"/>
+                        </div>
+                        <div class="mb-3">
+                            <input class="form-control placeholder:text-center shadow appearance-none border border-[#31384C] rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="subject" type="text" name="subject"
+                                   placeholder="Subject"/>
+                        </div>
+                        <div class="mb-3">
+                            <textarea class="form-control placeholder:text-center shadow appearance-none border border-[#31384C] rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="message" type="text" name="message" placeholder="Message"
+                                      style="height: 10rem;"></textarea>
+                        </div>
+                        <div class="">
+                            <button class="g-recaptcha  bg-[#31384C] px-3 py-2 rounded-md text-white hover:bg-[#31384C]/80"
+                                    data-sitekey="{{ config('services.recaptcha_v3.siteKey') }}"
+                                    data-callback="onSubmit"
+                                    data-action="submitContact">Kirim</button>
+                        </div>
                 </form>
             </div>
         </div>
     </section>
 
 @endsection
+
+                    

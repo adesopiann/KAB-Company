@@ -14,7 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/contact', [App\Http\Controllers\HomeController::class, 'contact'])->name('contact');
 Route::get('/product', [App\Http\Controllers\HomeController::class, 'product'])->name('produk');
+
+Route::get('/contact-us', ['App\Http\Controllers\ContactUsController', 'index'])->name('contact');
+Route::post('/contact-us', ['App\Http\Controllers\ContactUsController', 'send'])->name('contact.send');
 
 
