@@ -74,12 +74,45 @@ class ContactUsController extends Controller
         $mail->SMTPSecure = 'tls';
         $mail->Port = 587; // Use 587 for TLS encryption
         $mail->addAddress('adesopianganteng1@gmail.com');
-        $mail->setFrom($mail_data['fromEmail'], $mail_data['fromName']);
+
+        // Menggabungkan fromName dengan fromEmail
+        $fromNameWithEmail = "{$mail_data['fromName']} <{$mail_data['fromEmail']}>";
+        $mail->setFrom($mail_data['fromEmail'], $fromNameWithEmail);
+
         $mail->isHTML(true);
         $mail->Subject = $mail_data['subject'];
-        $mail->Body = $mail_data['message'];
+
+       $mail->Body = "
+        <div style=\"max-width: 640px; margin: 0 auto; padding: 24px; background-color: #ffffff; color: #1a202c; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;\">
+
+            <main style=\"margin-top: 32px;\">
+                <h2 style=\"color: #4a5568;\">From {$mail_data['fromName']},</h2>
+
+                <p style=\"margin-top: 8px; line-height: 1.75; color: #718096;\">
+                    You have a new message from <span style=\"font-weight: 600;\">{$mail_data['fromName']} ({$mail_data['fromEmail']})</span>.
+                </p>
+                
+                <div style=\"padding: 16px; background-color: #f7fafc; border-radius: 8px; border: 1px solid #e2e8f0; margin-top: 16px;\">
+                    <p style=\"font-size: 16px; line-height: 1.75; color: #1a202c;\">
+                        <strong>Subject:</strong> {$mail_data['subject']}
+                    </p>
+                    <p style=\"font-size: 16px; line-height: 1.75; color: #1a202c;\">
+                        <strong>Message:</strong><br>{$mail_data['message']}
+                    </p>
+                </div>
+            </main>
+
+            <footer style=\"margin-top: 32px; text-align: center; color: #718096;\">
+                <p style=\"margin: 0; font-size: 14px; color: #a0aec0;\">
+                    This email was sent by <a href=\"#\" style=\"color: #3182ce; text-decoration: underline;\" target=\"_blank\">{$mail_data['fromEmail']}</a>. 
+                </p>
+            </footer>
+        </div>
+    ";
+
 
         // dd(env('EMAIL_HOST'), env('EMAIL_USERNAME'), env('EMAIL_PASSWORD'));
+        // dd($mail_data);
 
 
     if ($mail->send()) {
